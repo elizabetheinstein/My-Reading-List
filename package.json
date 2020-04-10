@@ -1,0 +1,23 @@
+{
+  "name": "graphql-tutorial",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elizabetheinstein/GraphQL-Tutorial.git"
+  },
+  "author": "elizabetheinstein",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/elizabetheinstein/GraphQL-Tutorial/issues"
+  },
+  "homepage": "https://github.com/elizabetheinstein/GraphQL-Tutorial#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.3"
+  }
+}
