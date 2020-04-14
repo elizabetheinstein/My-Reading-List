@@ -1,6 +1,10 @@
 const express = require('express');
 const graphqlHTTP = require('express-graphql');
-const schema = require('./schema/schema')
+const schema = require('./server/schema/schema')
+const mongoose = require('mongoose')
+
+mongoose.connect('mongodb://localhost/graphqltutorial')
+mongoose.connection.once('open', () => console.log('Connection has been made.'))
 
 const app = express();
 
