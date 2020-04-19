@@ -3,7 +3,11 @@ const graphqlHTTP = require('express-graphql');
 const schema = require('./server/schema/schema')
 const mongoose = require('mongoose')
 
-mongoose.connect('mongodb://localhost/graphqltutorial')
+mongoose.connect('mongodb+srv://Elle:'+ process.env.password +'@test-cluster-jcdfi.mongodb.net/test?retryWrites=true&w=majority', {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true 
+  })
 mongoose.connection.once('open', () => console.log('Connection has been made.'))
 
 const app = express();
