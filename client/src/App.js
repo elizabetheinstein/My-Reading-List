@@ -1,11 +1,27 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { ApolloClient, HttpLink, InMemoryCache, ApolloProvider } from '@apollo/client';
+import BookList from './Components/BookList'
+import AddBook from './Components/AddBook'
 
-function App() {
-  return (
-    <div className="main">
-      <h1>My Reading List</h1>
-    </div>
-  );
+const client = new ApolloClient({
+    cache: new InMemoryCache(),
+    link: new HttpLink({
+        uri: 'http://localhost:4000/graphql'
+    })
+});
+
+class App extends Component {
+    render() {
+        return (
+            <ApolloProvider client={client}>
+                <div id="main">
+                    <h1>My Reading List</h1>
+                    <BookList />
+                    <AddBook />
+                </div>
+            </ApolloProvider>
+        );
+    }
 }
 
 export default App;
