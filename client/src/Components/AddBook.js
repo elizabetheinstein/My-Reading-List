@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useQuery, useMutation } from '@apollo/client'
-import { GET_AUTHORS, ADD_BOOK } from '../Queries/queries'
+import { GET_AUTHORS, ADD_BOOK, GET_BOOKS } from '../Queries/queries'
 
 const AddBook = () => {
     const {loading, error, data} = useQuery(GET_AUTHORS);
@@ -28,7 +28,10 @@ const AddBook = () => {
                 name,
                 genre,
                 authorId
-            }
+            },
+            refetchQueries: [{
+                query: GET_BOOKS
+            }]
         })
     }
 
