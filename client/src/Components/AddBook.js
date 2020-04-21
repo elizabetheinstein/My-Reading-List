@@ -1,32 +1,57 @@
-import React from 'react'
-import { AddBookForm } from './AddBookForm'
+import React, { useState } from 'react'
+import { useQuery, useMutation } from '@apollo/client'
+import { GET_AUTHORS, ADD_BOOK } from '../Queries/queries'
 
-class AddBook extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            name: '',
-            genre: '',
-            authorId: ''
-        }
-        this.handleChange = this.handleChange.bind(this)
-    }
+const AddBook = () => {
+    const {loading, error, data} = useQuery(GET_AUTHORS);
+    const [addBook] = useMutation(ADD_BOOK);
+    const [name, setName] = useState('');
+    const [genre, setGenre] = useState('');
+    const [ authorId, setAuthorId]= useState('')
 
-    handleChange(event) {
-        this.setState({
-            [event.target.name]: event.target.value
+    const displayAuthors = () => {
+    if (loading) return <option>Loading Authors...</option>;
+    if (error) return <option>Error Loading Authors :(</option>;
+
+    return (
+        <option>Select Author</option>,
+        data.authors.map(({id, name}) => (
+        <option key={id} value={id}>{name}</option>
+        ))
+    );
+    };
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        addBook({
+            variables: {
+                name,
+                genre,
+                authorId
+            }
         })
     }
-    render() {
-        return (
-            <AddBookForm 
-            name={this.state.name}
-            genre={this.state.genre}
-            authorId={this.state.authorId}
-            handleChange={this.handleChange}
-            />
-        )
-    }
+
+    return (
+        <form id="add-book" onSubmit={handleSubmit}>
+            <div className="field">
+                <label>Book name:</label>
+                <input type="text" onChange = {(event)=>setName(event.target.value)}/>
+            </div>
+            <div className="field">
+                <label>Genre:</label>
+                <input type="text" onChange = {(event)=>setGenre(event.target.value)}/>
+            </div>
+            <div className="field">
+                <label>Author:</label>
+                <select onChange = {(event)=>setAuthorId(event.target.value)}>
+                    <option>Select author</option>
+                    { displayAuthors() }
+                </select>
+            </div>
+            <button>+</button>
+       </form>
+    );
 }
 
 export default AddBook;

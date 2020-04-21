@@ -6,7 +6,7 @@ const BookList = () => {
     const { loading, error, data } = useQuery(GET_BOOKS)
     
     if (loading) return <p>Loading...</p>
-    if (error) return <p>Error :(</p>
+    if (error) return <p>{`Error: ${error}`}</p>
 
     console.log("DATA", data)
 
