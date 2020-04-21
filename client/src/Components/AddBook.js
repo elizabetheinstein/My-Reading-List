@@ -11,7 +11,7 @@ const AddBook = () => {
 
     const displayAuthors = () => {
     if (loading) return <option>Loading Authors...</option>;
-    if (error) return <option>Error Loading Authors :(</option>;
+    if (error) return <option>Error: {error.message}</option>;
 
     return (
         <option>Select Author</option>,
