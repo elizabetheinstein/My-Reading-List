@@ -10,18 +10,16 @@ const client = new ApolloClient({
     })
 });
 
-class App extends Component {
-    render() {
-        return (
-            <ApolloProvider client={client}>
-                <div id="main">
-                    <h1>My Reading List</h1>
-                    <BookList />
-                    <AddBook />
-                </div>
-            </ApolloProvider>
-        );
-    }
+const App = () => {
+    return (
+        <ApolloProvider client={client}>
+            <div id="main">
+                <h1>My Reading List</h1>
+                <BookList />
+                <AddBook />
+            </div>
+        </ApolloProvider>
+    );
 }
 
 export default App;

@@ -10,7 +10,7 @@ const BookDetails = ({bookId}) => {
     console.log("PROPS", bookId)
     
     if (loading) return <p>Loading...</p>;
-    if (error) return <p>{`Error: ${error.message}`}</p>;
+    if (error) return <p>{`Error in book details: ${error.message}`}</p>;
     if (!data) return <p>No book selected.</p>;
 
     const { 
@@ -29,9 +29,9 @@ const BookDetails = ({bookId}) => {
         <div id="book-details">
             <div key={bookId}>
                 <h2>{name}</h2>
-                <p>{genre}</p>
-                <p>{author.name}</p>
-                <p>All books by this author</p>
+                <p>Genre: {genre}</p>
+                <p>Author: {author.name}</p>
+                <p>All books by {author.name}</p>
                 <ul className="other-books">{books}</ul>
             </div>
         </div>

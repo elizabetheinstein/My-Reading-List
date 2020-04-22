@@ -2,23 +2,23 @@ body {
   background: #eee;
   font-family: monospace;
 }
-#main h1{
+#main h1 {
   color: #444;
   text-align: center;
 }
 
-#main{
+#main {
   padding: 0px;
   box-sizing: border-box;
   width: 60%;
   height: 100%;
 }
 
-#book-list{
+#book-list {
   padding: 0;
 }
 
-#book-list li{
+#book-list li {
   display: inline-block;
   margin: 12px;
   padding: 10px;
@@ -29,7 +29,7 @@ body {
   color: #880E4F;
 }
 
-form{
+form {
   background: #fff;
   padding: 20px;
   position: fixed;
@@ -38,24 +38,24 @@ form{
   width: 400px;
 }
 
-form .field{
+form .field {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 10px;
 }
 
-form label{
+form label {
   text-align: right;
   padding: 6px;
 }
 
-form input, form select{
+form input, form select {
   margin: 4px 0;
   padding: 6px;
   box-sizing: border-box;
 }
 
-form button{
+form button {
   color: #fff;
   font-size: 2em;
   background: #AD1457;
@@ -68,7 +68,7 @@ form button{
   left: 10px;
 }
 
-#book-details{
+#book-details {
   position: fixed;
   top: 0;
   right: 0;

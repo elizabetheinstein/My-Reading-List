@@ -6,16 +6,16 @@ import BookDetails from './BookDetails'
 const BookList = () => {
     const { loading, error, data } = useQuery(GET_BOOKS)
     const [selected, setSelected] = useState(null)
-    
+
     if (loading) return <p>Loading...</p>
-    if (error) return <p>{`Error: ${error.message}`}</p>
+    if (error) return <p>Error in book list: {error.message}</p>
 
     console.log("DATA", data)
 
-    const content = data.books.map(({ id, name, author }) => (
+    const content = data.books.map(({ id, name }) => (
         <div>
             <ul id='book-list'>
-                <li key={id} onClick={e => {setSelected(id)}}>{name} by {author.name}</li>
+                <li key={id} onClick={e => {setSelected(id)}}>{name}</li>
             </ul>
         </div>
     ))
