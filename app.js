@@ -4,6 +4,10 @@ const schema = require('./server/schema/schema')
 const mongoose = require('mongoose')
 const cors = require('cors')
 
+const app = express();
+
+app.use(cors())
+
 mongoose.connect('mongodb+srv://Elle:'+ process.env.password +'@test-cluster-jcdfi.mongodb.net/test?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useCreateIndex: true,
@@ -11,9 +15,7 @@ mongoose.connect('mongodb+srv://Elle:'+ process.env.password +'@test-cluster-jcd
   })
 mongoose.connection.once('open', () => console.log('Connection has been made.'))
 
-const app = express();
 
-app.use(cors())
 
 app.use('/graphql', graphqlHTTP({
     schema,
